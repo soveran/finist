@@ -110,20 +110,20 @@ pairs are the possible transitions.
 For the FSM described in the examples above, the keys are laid out
 as follows:
 
-```
+```ini
 # Current state
-
 finist:order (string)
 
-# Available transitions
-
+# Transitions for event `approve`
 finist:order:approve (hash)
 	pending   -> approved
 
+# Transitions for event `cancel`
 finist:order:cancel (hash)
 	pending   -> cancelled
 	approved  -> cancelled
 
+# Transitions for event `reset`
 finist:order:reset (hash)
 	cancelled -> pending
 ```

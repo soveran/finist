@@ -18,8 +18,8 @@ Meet us on IRC: [#lesscode](irc://chat.freenode.net/#lesscode) on
 Related projects
 ----------------
 
-[Finist in Lua][finist.lua].
-[Finist in Rust][finist.rust].
+* [Finist implemented in Lua][finist.lua]
+* [Finist implemented in Rust][finist.rust]
 
 Getting started
 ---------------

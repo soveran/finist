@@ -18,7 +18,8 @@ Meet us on IRC: [#lesscode](irc://chat.freenode.net/#lesscode) on
 Related projects
 ----------------
 
-There's an [alternative implementation for Lua][finist.lua].
+[Finist in Lua][finist.lua].
+[Finist in Rust][finist.rust].
 
 Getting started
 ---------------
@@ -100,6 +101,33 @@ machine.rm("reset")
 
 Note that every change is persisted in Redis.
 
+Representation
+--------------
+
+Each event is represented as a hash in Redis, and its field/value
+pairs are the possible transitions.
+
+For the FSM described in the examples above, the keys are laid out
+as follows:
+
+```
+# Current state
+
+finist:order (string)
+
+# Available transitions
+
+finist:order:approve (hash)
+	pending   -> approved
+
+finist:order:cancel (hash)
+	pending   -> cancelled
+	approved  -> cancelled
+
+finist:order:reset (hash)
+	cancelled -> pending
+```
+
 Installation
 ------------
 
@@ -110,3 +138,4 @@ $ gem install finist
 [redis]: http://redis.io
 [redic]: https://github.com/amakawa/redic
 [finist.lua]: https://github.com/soveran/finist.lua
+[finist.rust]: https://github.com/badboy/finist

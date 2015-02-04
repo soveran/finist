@@ -1,8 +1,12 @@
 require_relative "helper"
 
-test do
-  c = Redic.new
+setup do
+  Redic.new.tap do |c|
+    c.call("FLUSHDB")
+  end
+end
 
+test do |c|
   fsm = Finist.new(c, "myfsm", "pending")
 
   fsm.on("approve", "pending", "approved")

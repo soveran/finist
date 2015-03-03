@@ -43,11 +43,6 @@ class Finist
 
   def trigger(ev)
     result = send_event(ev)
-
-    if result[1]
-      return true, result[0]
-    else
-      return false, result[0]
-    end
+    return result[0], result[1] != nil
   end
 end

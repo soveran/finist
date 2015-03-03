@@ -42,13 +42,13 @@ test do |c|
   assert_equal("cancelled", fsm2.state)
 
   # A successful event returns true
-  changed, state = fsm.trigger("reset")
+  state, changed = fsm.trigger("reset")
 
   assert_equal(true, changed)
   assert_equal("pending", state)
 
   # An unsuccessful event returns false
-  changed, state = fsm.trigger("reset")
+  state, changed = fsm.trigger("reset")
 
   assert_equal(false, changed)
   assert_equal("pending", state)
@@ -57,7 +57,7 @@ test do |c|
   fsm.rm("approve")
 
   # Non existent events return false
-  changed, state = fsm.trigger("approve")
+  state, changed = fsm.trigger("approve")
 
   assert_equal(false, changed)
   assert_equal("pending", state)

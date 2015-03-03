@@ -68,24 +68,24 @@ And we can trigger an event:
 
 ```ruby
 machine.trigger("approve")
-# => [true, "approved"]
+# => ["approved", true]
 ```
 
 The `trigger` method returns an array of two values: the first
-represents whether a transition occurred, and the second represents
-the current state.
+represents the current state, and the second represents whether
+a transition occurred.
 
 Here's what happens if an event doesn't cause a transition:
 
 ```ruby
 machine.trigger("reset")
-# => [false, "approved"]
+# => ["approved", false]
 ```
 
 Here's a convenient way to use this flag:
 
 ```ruby
-changed, state = machine.trigger("reset")
+state, changed = machine.trigger("reset")
 
 if changed
   printf("State changed to %s\n", state)
